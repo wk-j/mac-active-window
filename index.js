@@ -8,19 +8,34 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const child = require("child_process");
-function spawn() {
-    let app = "swift/ActiveWindow/.build/debug/ActiveWindow";
+const path = require("path");
+class Location {
+}
+exports.Location = Location;
+class Window {
+}
+exports.Window = Window;
+function spawn(pid) {
+    let dir = __dirname;
+    let app = path.join(dir, `swift/ActiveWindow/.build/debug/ActiveWindow`);
     return new Promise(resolve => {
-        child.execFile(app, [], function (err, stdout, stderr) {
-            resolve(stdout);
+        child.execFile(app, [pid], function (err, stdout, stderr) {
+            if (!err) {
+                resolve(stdout);
+            }
+            else {
+                console.error(err);
+                resolve("{}");
+            }
         });
     });
 }
-function getInfo() {
+function findActiveWindow(pid) {
     return __awaiter(this, void 0, void 0, function* () {
-        let data = yield spawn();
-        console.log(data);
+        let data = yield spawn(pid);
+        let window = JSON.parse(data);
+        return window;
     });
 }
-getInfo();
+exports.findActiveWindow = findActiveWindow;
 //# sourceMappingURL=index.js.map

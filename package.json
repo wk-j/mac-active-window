@@ -1,12 +1,14 @@
 {
   "name": "mac-active-window",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "get property of top most window",
   "main": "index.js",
   "author": "wk-j",
   "license": "MIT",
   "scripts": {
+    "prepublish": "tsc",
     "start": "node index.js",
+    "test": "node test/index.js",
     "bs": "swift build -C swift/ActiveWindow",
     "rs": "swift/ActiveWindow/.build/debug/ActiveWindow 38111"
   },
