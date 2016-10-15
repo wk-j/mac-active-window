@@ -1,6 +1,6 @@
 {
   "name": "mac-active-window",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "get property of top most window",
   "main": "index.js",
   "author": "wk-j",
@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node index.js",
     "bs": "swift build -C swift/ActiveWindow",
-    "rs": "swift/ActiveWindow/.build/debug/ActiveWindow"
+    "rs": "swift/ActiveWindow/.build/debug/ActiveWindow 38111"
   },
   "devDependencies": {
     "@types/node": "^6.0.45"

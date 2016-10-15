@@ -49,7 +49,8 @@ func toJson(location: Location) -> String {
     } 
 }
 
-let location = getLocation(pid: 0)
+let pid = Int(CommandLine.arguments[1])!
+let location = getLocation(pid: pid)
 let json = toJson(location: location)
 
 print(json);
