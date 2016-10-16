@@ -1,7 +1,7 @@
 {
   "name": "mac-active-window",
-  "version": "0.0.4",
-  "description": "get property of top most window",
+  "version": "0.0.5",
+  "description": "Get window information",
   "main": "index.js",
   "author": "wk-j",
   "license": "MIT",
@@ -9,8 +9,10 @@
     "prepublish": "tsc",
     "start": "node index.js",
     "test": "node test/index.js",
-    "bs": "swift build -C swift/ActiveWindow",
-    "rs": "swift/ActiveWindow/.build/debug/ActiveWindow 38111"
+    "build-active-window": "swift build -C swift/ActiveWindow",
+    "run-active-window": "swift/ActiveWindow/.build/debug/ActiveWindow 38111",
+    "build-screen-size": "swift build -C swift/ScreenSize",
+    "run-screen-size": "swift/ScreenSize/.build/debug/ScreenSize"
   },
   "devDependencies": {
     "@types/node": "^6.0.45"

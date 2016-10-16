@@ -1,6 +1,7 @@
 import * as lib from "../index";
 
 let location = lib.findActiveWindow(38111);
+let size = lib.findScreenSize();
 
 location.then(rs => {
     console.log(rs.location.x);
@@ -9,6 +10,6 @@ location.then(rs => {
     console.log(rs.location.height);
 });
 
-location.catch(err => {
-    console.error(err);
+size.then(rs => {
+    console.log(rs);
 });

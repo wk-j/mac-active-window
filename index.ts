@@ -13,11 +13,26 @@ export class Window {
     location: Location;
 }
 
-function spawn(pid) {
+function screenSize() {
+    let dir = __dirname;
+    let app = path.join(dir, "swift/ScreenSize/.build/debug/ScreenSize");
+    return new Promise<string>(resolve => {
+        child.execFile(app, [], (err, stdout, stderr) => {
+            if(!err) {
+                resolve(stdout);
+            }else {
+                console.error(err);
+                resolve("{}");
+            }
+        });
+    });
+}
+
+function activeWindow(pid) {
     let dir = __dirname;
     let app = path.join(dir, `swift/ActiveWindow/.build/debug/ActiveWindow`);
     return new Promise<string>(resolve => {
-        child.execFile(app, [ pid ], function(err, stdout, stderr) { 
+        child.execFile(app, [ pid ], (err, stdout, stderr) => { 
             if(!err) {
                 resolve(stdout);
             }else {
@@ -29,7 +44,13 @@ function spawn(pid) {
 }
 
 export async function findActiveWindow(pid) {
-    let data = await spawn(pid);
+    let data = await activeWindow(pid);
     let window = JSON.parse(data) as Window;
     return window;
+}
+
+export async function findScreenSize() {
+    let data = await screenSize();
+    let size = JSON.parse(data) as { width: number, height: number };
+    return size;
 }
