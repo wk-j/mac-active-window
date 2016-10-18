@@ -1,6 +1,6 @@
 .DS_Store
 .build/debug/ModuleCache
-.build/debug/ActiveWindow.*
+.build/debug/ResizeWindow.*
 Soureces
 Tests
 *swift

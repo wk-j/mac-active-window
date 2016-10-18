@@ -1,6 +1,6 @@
 {
   "name": "mac-active-window",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "Get window information",
   "main": "index.js",
   "author": "wk-j",

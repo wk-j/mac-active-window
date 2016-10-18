@@ -1,3 +1,9 @@
 .DS_Store
-.build/ModuleCache
-.build/ScreenSize.*
+.build/debug/ModuleCache
+.build/debug/ScreenSize.*
+Soureces
+Tests
+*swift
+build.db
+debug.yaml
+*.xctest

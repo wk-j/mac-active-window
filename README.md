@@ -1,7 +1,8 @@
 ## Active Window
 
-- Find window location
-- Find screen size
+- [x] Find window location
+- [x] Find screen size
+- [ ] Resize window
 
 ## Install 
 
@@ -36,5 +37,15 @@ size.then(rs => {
     console.log(rs.width);
     console.log(rs.height);
 });
+
+```
+
+## Resize window
+
+```javascript
+import * as lib from "mac-active-window";
+
+var pid = 11886;
+lib.resizeWindow(pid, { width: 500, height: 300 });
 
 ```
