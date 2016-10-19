@@ -37,11 +37,56 @@ tell application "System Events"
 end tell
 ```
 
-### Edit
+## Move frontmost
 
 ```
 tell application "System Events"
-	set proc to item 1 of (processes whose unix id is 25068)
-	set the position of proc window {100, 100}
+	set activeApp to name of the first process whose frontmost is true
+end tell
+
+tell application activeApp
+	set the bounds of window 1 to {100, 100, 100, 100}
+end tell
+```
+
+## Set postition
+
+```
+set theApp to "Google Chrome"
+set appHeight to 500
+set appWidth to 500
+
+set screenWidth to 1000
+set screenHeight to 1000
+
+tell application theApp
+	activate
+	reopen
+	set yAxis to (screenHeight - appHeight) / 2 as integer
+	set xAxis to (screenWidth - appWidth) / 2 as integer
+	set the bounds of the first window to {xAxis, yAxis, appWidth + xAxis, appHeight + yAxis}
+end tell
+```
+
+## Create application by path
+
+```
+set theApp to (path to frontmost application as Unicode text)
+tell application theApp
+	tell window 1
+		set the bounds to {100, 100, 100, 100}
+	end tell
+end tell
+```
+
+### Test ...
+
+```
+tell application "System Events"
+	set activeApp to name of the first process whose frontmost is true
+end tell
+
+tell application activeApp
+	set the bounds of window 1 to {100, 100, 100, 100}
 end tell
 ```

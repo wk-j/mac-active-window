@@ -1,12 +1,17 @@
 import Foundation
 
-let script =
-    "tell application \"System Events\"\n" +
-        "set proc to item 1 of (processes whose unix id is 25068)\n" +
-        "tell proc\n" +
-            "set position to {100, 100}\n" +
-        "end tell\n" +
+let script = [
+    "set theApp to (path to frontmost application as Unicode text)\n",
+    "tell application \"System Events\"\n",
+    "   set activeApp to name of the first process whose frontmost is true\n",
+    "end tell\n",
+    "tell application theApp\n",
+    "   activate\n",
+    "   set the bounds of window 1 to {300, 300, 300, 300}\n",
     "end tell"
+].reduce("", +)
+
+//script = [ "set theApp to (path to frontmost application as Unicode text)"].reduce("", +)
 
 let appleScript = NSAppleScript(source: script)
 
