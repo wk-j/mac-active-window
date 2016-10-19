@@ -1,10 +1,8 @@
-set theApp to (path to frontmost application as Unicode text)
-tell application theApp
+tell application "Google Chrome"
     (*
     set _window to first window where titled is true
     set the bounds of _window to {100, 100, 100, 100}
     *)
-
         repeat with w in every window
             log (get properties of w)
             --zoomed
@@ -24,4 +22,6 @@ tell application theApp
             --index:2
             --active tab index:1}
         end repeat
+
+         set the bounds of first window to {500 , 500, 100, 100}
 end tell
