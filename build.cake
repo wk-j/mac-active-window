@@ -20,6 +20,13 @@ Action<string> runApple = (name) => {
     });
 };
 
+Action<string> runSwiftScript = (name) => {
+    var command = String.Format("scripts/{0}.swift", name);
+    StartProcess("swift", new ProcessSettings {
+        Arguments = command
+    });
+};
+
 Task("Default").Does(() => {});
 
 Task("Build-ActiveWindow").Does(() => {
@@ -44,6 +51,8 @@ Task("Script-Chrome").Does(() => runApple("chrome"));
 Task("Script-Resize").Does(() => runApple("resize"));
 Task("Script-Active").Does(() => runApple("active"));
 
+Task("Swift-Hello").Does(() => runSwiftScript("hello"));
+Task("Swift-Front").Does(() => runSwiftScript("front"));
 
 
 var target = Argument("target", "default");
