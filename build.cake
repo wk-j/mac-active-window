@@ -13,6 +13,13 @@ Action<string, string> runSwift = (name,args) => {
     });
 };
 
+Action<string> runApple = (name) => {
+    var command = String.Format("scripts/{0}.applescript", name);
+    StartProcess("osascript", new ProcessSettings {
+        Arguments = command
+    });
+};
+
 Task("Default").Does(() => {});
 
 Task("Build-ActiveWindow").Does(() => {
@@ -32,6 +39,12 @@ Task("Run-ResizeWindow")
     .Does(() => {
         runSwift("ResizeWindow", ""); 
 });
+
+Task("Script-Chrome").Does(() => runApple("chrome"));
+Task("Script-Resize").Does(() => runApple("resize"));
+Task("Script-Active").Does(() => runApple("active"));
+
+
 
 var target = Argument("target", "default");
 RunTarget(target);
