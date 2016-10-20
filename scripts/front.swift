@@ -10,10 +10,21 @@ for app in applications {
 var front = workspace.frontmostApplication
 print(front)
 
-let appElement = AXUIElementCreateApplication(front!.processIdentifier) //.takeRetainedValue()
+let appElement = AXUIElementCreateApplication(front!.processIdentifier)
 
 var result: AnyObject?
-let cf = kAXFocusedWindowAttribute as CFString;
+let cf = kAXFocusedWindowAttribute as CFString
 AXUIElementCopyAttributeValue(appElement, cf, &result) 
 
 var x = result as! AXUIElement
+print(x)
+
+/*
+let mo = Mirror(reflecting: result!)
+
+for (index, attr) in mo.children.enumerated() {
+    if let property_name = attr.label as String! {
+        print("Attr \(index): \(property_name) = \(attr.value)")
+    }
+}
+*/

@@ -1,4 +1,3 @@
-
 Action<string> buildSwift = (name) => {
     var args = String.Format("build -C swift/{0}", name);
     StartProcess("swift", new ProcessSettings {
@@ -23,6 +22,13 @@ Action<string> runApple = (name) => {
 Action<string> runSwiftScript = (name) => {
     var command = String.Format("scripts/{0}.swift", name);
     StartProcess("swift", new ProcessSettings {
+        Arguments = command
+    });
+};
+
+Action<string> buildCabon = (name) => {
+    var command = String.Format("-framework Carbon -o cabon/{0} cabon/{0}.c}", name);
+    StartProcess("gcc", new ProcessSettings {
         Arguments = command
     });
 };
@@ -54,6 +60,7 @@ Task("Script-Active").Does(() => runApple("active"));
 Task("Swift-Hello").Does(() => runSwiftScript("hello"));
 Task("Swift-Front").Does(() => runSwiftScript("front"));
 
+Task("Cabon-Move").Does(() => buildCabon("move"));
 
 var target = Argument("target", "default");
 RunTarget(target);
