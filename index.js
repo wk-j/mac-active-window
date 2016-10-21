@@ -24,8 +24,21 @@ function screenSize() {
                 resolve(stdout);
             }
             else {
-                console.error(err);
                 resolve("{}");
+            }
+        });
+    });
+}
+function resize(w, h) {
+    let dir = __dirname;
+    let app = path.join(dir, "carbon/resize.exe");
+    return new Promise((resolve, error) => {
+        child.execFile(app, [w, h], (err, stdout, stderr) => {
+            if (!err) {
+                resolve(stdout);
+            }
+            else {
+                error(err);
             }
         });
     });
@@ -61,4 +74,11 @@ function findScreenSize() {
     });
 }
 exports.findScreenSize = findScreenSize;
+function resizeWindow(width, height) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let data = yield resize(width, height);
+        return data;
+    });
+}
+exports.resizeWindow = resizeWindow;
 //# sourceMappingURL=index.js.map

@@ -21,8 +21,21 @@ function screenSize() {
             if(!err) {
                 resolve(stdout);
             }else {
-                console.error(err);
                 resolve("{}");
+            }
+        });
+    });
+}
+
+function resize(w, h) {
+    let dir = __dirname;
+    let app = path.join(dir, "carbon/resize.exe");
+    return new Promise<string>((resolve, error) => {
+        child.execFile(app, [w, h], (err, stdout, stderr) => {
+            if(!err) {
+                resolve(stdout);
+            }else {
+                error("Can't use accessibility API!");
             }
         });
     });
@@ -53,4 +66,9 @@ export async function findScreenSize() {
     let data = await screenSize();
     let size = JSON.parse(data) as { width: number, height: number };
     return size;
+}
+
+export async function resizeFrontMostWindow(width, height) {
+    let data = await resize(width, height);
+    return data;
 }

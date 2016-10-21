@@ -26,10 +26,14 @@ Action<string> runSwiftScript = (name) => {
     });
 };
 
-Action<string> buildCabon = (name) => {
-    var command = String.Format("-framework Carbon -o cabon/{0} cabon/{0}.c}", name);
+Action<string, string> buildCabon = (name, args) => {
+    var exe = "carbon/" + name + ".exe";
+    var command = String.Format("-framework Carbon -o {1} carbon/{0}.c", name, exe);
     StartProcess("gcc", new ProcessSettings {
         Arguments = command
+    });
+    StartProcess(exe, new ProcessSettings {
+        Arguments = args
     });
 };
 
@@ -60,7 +64,8 @@ Task("Script-Active").Does(() => runApple("active"));
 Task("Swift-Hello").Does(() => runSwiftScript("hello"));
 Task("Swift-Front").Does(() => runSwiftScript("front"));
 
-Task("Cabon-Move").Does(() => buildCabon("move"));
+Task("Cabon-Move").Does(() => buildCabon("move", ""));
+Task("Cabon-Resize").Does(() => buildCabon("resize", "800 800"));
 
 var target = Argument("target", "default");
 RunTarget(target);

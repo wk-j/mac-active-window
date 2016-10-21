@@ -13,3 +13,10 @@ location.then(rs => {
 size.then(rs => {
     console.log(rs);
 });
+
+lib.resizeFrontMostWindow(800, 800).then(rs => {
+
+}).catch(err => {
+    console.error("+++++++");
+    console.error(err);
+});

@@ -2,7 +2,7 @@
 
 - [x] Find window location
 - [x] Find screen size
-- [ ] Resize window
+- [x] Resize front most window
 
 ## Install 
 
@@ -40,12 +40,10 @@ size.then(rs => {
 
 ```
 
-## Resize window
+## Resize front most window
 
 ```javascript
 import * as lib from "mac-active-window";
 
-var pid = 11886;
-lib.resizeWindow(pid, { width: 500, height: 300 });
-
+lib.resizeFrontMostWindow(500, 300);
 ```
