@@ -29,7 +29,7 @@ function screenSize() {
 
 function resize(w, h) {
     let dir = __dirname;
-    let app = path.join(dir, "carbon/resize.exe");
+    let app = path.join(dir, "carbon/resize.bin");
     return new Promise<string>((resolve, error) => {
         child.execFile(app, [w, h], (err, stdout, stderr) => {
             if(!err) {

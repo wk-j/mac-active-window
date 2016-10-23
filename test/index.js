@@ -11,7 +11,7 @@ location.then(rs => {
 size.then(rs => {
     console.log(rs);
 });
-lib.resizeWindow(800, 800).then(rs => {
+lib.resizeFrontMostWindow(800, 800).then(rs => {
 }).catch(err => {
     console.error("+++++++");
     console.error(err);

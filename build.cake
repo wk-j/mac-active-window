@@ -27,7 +27,7 @@ Action<string> runSwiftScript = (name) => {
 };
 
 Action<string, string> buildCabon = (name, args) => {
-    var exe = "carbon/" + name + ".exe";
+    var exe = "carbon/" + name + ".bin";
     var command = String.Format("-framework Carbon -o {1} carbon/{0}.c", name, exe);
     StartProcess("gcc", new ProcessSettings {
         Arguments = command

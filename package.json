@@ -1,6 +1,6 @@
 {
   "name": "mac-active-window",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Get window information",
   "main": "index.js",
   "author": "wk-j",
@@ -16,5 +16,6 @@
   },
   "devDependencies": {
     "@types/node": "^6.0.45"
-  }
+  },
+  "dependencies": {}
 }

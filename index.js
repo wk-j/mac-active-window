@@ -31,14 +31,14 @@ function screenSize() {
 }
 function resize(w, h) {
     let dir = __dirname;
-    let app = path.join(dir, "carbon/resize.exe");
+    let app = path.join(dir, "carbon/resize.bin");
     return new Promise((resolve, error) => {
         child.execFile(app, [w, h], (err, stdout, stderr) => {
             if (!err) {
                 resolve(stdout);
             }
             else {
-                error(err);
+                error("Can't use accessibility API!");
             }
         });
     });
@@ -74,11 +74,11 @@ function findScreenSize() {
     });
 }
 exports.findScreenSize = findScreenSize;
-function resizeWindow(width, height) {
+function resizeFrontMostWindow(width, height) {
     return __awaiter(this, void 0, void 0, function* () {
         let data = yield resize(width, height);
         return data;
     });
 }
-exports.resizeWindow = resizeWindow;
+exports.resizeFrontMostWindow = resizeFrontMostWindow;
 //# sourceMappingURL=index.js.map
