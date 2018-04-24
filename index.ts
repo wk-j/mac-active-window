@@ -1,10 +1,9 @@
-
 import * as child from "child_process";
 import * as path from "path";
 
 export class Location {
     x: number;
-    y: number; 
+    y: number;
     width: number;
     height: number;
 }
@@ -18,9 +17,9 @@ function screenSize() {
     let app = path.join(dir, "swift/ScreenSize/.build/debug/ScreenSize");
     return new Promise<string>(resolve => {
         child.execFile(app, [], (err, stdout, stderr) => {
-            if(!err) {
+            if (!err) {
                 resolve(stdout);
-            }else {
+            } else {
                 resolve("{}");
             }
         });
@@ -32,9 +31,9 @@ function resize(w, h) {
     let app = path.join(dir, "carbon/resize.bin");
     return new Promise<string>((resolve, error) => {
         child.execFile(app, [w, h], (err, stdout, stderr) => {
-            if(!err) {
+            if (!err) {
                 resolve(stdout);
-            }else {
+            } else {
                 error("Can't use accessibility API!");
             }
         });
@@ -45,14 +44,14 @@ function activeWindow(pid) {
     let dir = __dirname;
     let app = path.join(dir, `swift/ActiveWindow/.build/debug/ActiveWindow`);
     return new Promise<string>(resolve => {
-        child.execFile(app, [ pid ], (err, stdout, stderr) => { 
-            if(!err) {
+        child.execFile(app, [pid], (err, stdout, stderr) => {
+            if (!err) {
                 resolve(stdout);
-            }else {
+            } else {
                 console.error(err);
                 resolve("{}");
             }
-        }); 
+        });
     });
 }
 

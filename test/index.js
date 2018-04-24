@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const lib = require("../index");
 let location = lib.findActiveWindow(38111);
 let size = lib.findScreenSize();

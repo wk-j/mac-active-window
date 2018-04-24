@@ -48,13 +48,13 @@ Task("Build-ScreenSize").Does(() => {
 });
 
 Task("Build-ResizeWindow").Does(() => {
-    buildSwift("ResizeWindow");
+     buildSwift("ResizeWindow");
 });
 
 Task("Run-ResizeWindow")
     .IsDependentOn("Build-ResizeWindow")
     .Does(() => {
-        runSwift("ResizeWindow", ""); 
+        runSwift("ResizeWindow", "");
 });
 
 Task("Script-Chrome").Does(() => runApple("chrome"));

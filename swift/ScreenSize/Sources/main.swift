@@ -1,4 +1,3 @@
-
 import AppKit
 import Foundation
 
@@ -16,9 +15,9 @@ func toJson(size: Dictionary<String, CGFloat>) -> String {
         let jsonData = try JSONSerialization.data(withJSONObject: size , options: .prettyPrinted)
         let json = String(data: jsonData, encoding: String.Encoding.utf8)
         return json!
-    } catch { 
+    } catch {
         return "{}"
-    } 
+    }
 }
 
 var size = getSize()
